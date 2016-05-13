@@ -5,6 +5,7 @@ package com.mmuzhev.formatter;
 
 public class Formatter implements FormatterInterface {
     private int spaceCount = 0;
+    private boolean enter = false;
 
     /**
      * format symbol to Java-code view
@@ -17,21 +18,29 @@ public class Formatter implements FormatterInterface {
             case ';': {
                 result.append(symbol);
                 result.append("\n");
-                result.append(forSpace(spaceCount));
+                //result.append(forSpace(spaceCount));
+                enter = true;
                 break;
             }
             case '{' : {
+                result.append(forSpace(1));
                 result.append(symbol);
                 spaceCount += 4;
                 result.append("\n");
-                result.append(forSpace(spaceCount));
+                //result.append(forSpace(spaceCount));
+                enter = true;
+                break;
+            }
+            case '=' : {
+                result.append(forSpace(1));
+                result.append(symbol);
+                result.append(forSpace(1));
                 break;
             }
             case '}' : {
-                if (spaceCount >= 8) {
-                    spaceCount -= 8;
+                if (spaceCount >= 4) {
+                    spaceCount -= 4;
                     result.substring(0);
-                    result.append("\n");
                     result.append(forSpace(spaceCount));
                     result.append(symbol);
                     result.append("\n");
@@ -48,7 +57,12 @@ public class Formatter implements FormatterInterface {
                 }
             }
             default:{
-                result.append(symbol);
+                if(enter){
+                    enter = false;
+                    result.append(forSpace(spaceCount));
+                    result.append(symbol);
+                }
+                else result.append(symbol);
             }
         }
         return result.toString();

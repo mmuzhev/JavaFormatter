@@ -6,7 +6,9 @@ import com.mmuzhev.reader.MyReaderException;
 import com.mmuzhev.writer.MyWriterException;
 
 import java.io.*;
-
+/*
+Expected that code writed correct, else program will not work at all
+ */
 public class Main {
     public static void main (String[] args) throws MyReaderException, MyWriterException, FormatterException{
 

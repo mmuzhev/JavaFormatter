@@ -14,8 +14,8 @@ public class FormatterTest {
 
     @Test
     public void correctlyFormatText() throws FormatterException {
-        String str1 = "kuhg,jhgb() {ljhljbj;}";
-        String str2 = "kuhg,jhgb() {\n    ljhljbj;\n    \n}\n";
+        String str1 = "kuhg,jhgb(){ljhljbj;}";
+        String str2 = "kuhg,jhgb() {\n    ljhljbj;\n}\n";
 
         assertEquals(str2, format(str1));
     }
