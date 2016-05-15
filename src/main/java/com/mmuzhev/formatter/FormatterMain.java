@@ -42,13 +42,10 @@ public class FormatterMain {
      */
     public void formatCode() throws FormatterException {
         try {
-            StringBuilder result = new StringBuilder();
             while (!reader.checkEnd()) {
                 char nextChar = reader.read();
-                result.append( formatter.format(nextChar));
+                writer.write(formatter.format(nextChar));
             }
-
-            writer.write(result.toString());
             writer.close();
             reader.close();
         }

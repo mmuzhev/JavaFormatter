@@ -14,11 +14,19 @@ public class Formatter implements FormatterInterface {
      */
     public String format(char symbol) {
         StringBuilder result = new StringBuilder();
+        char symbol1 = ' ';
+
+        // few similar cases in one
+        if (symbol == '=' || symbol == '+' || symbol == '-' || symbol == '*' || symbol == '(' || symbol == ')') {
+
+            symbol1 = symbol;
+            symbol = '=';
+        }
+
         switch (symbol) {
             case ';': {
                 result.append(symbol);
                 result.append("\n");
-                //result.append(forSpace(spaceCount));
                 enter = true;
                 break;
             }
@@ -27,13 +35,12 @@ public class Formatter implements FormatterInterface {
                 result.append(symbol);
                 spaceCount += 4;
                 result.append("\n");
-                //result.append(forSpace(spaceCount));
                 enter = true;
                 break;
             }
             case '=' : {
                 result.append(forSpace(1));
-                result.append(symbol);
+                result.append(symbol1);
                 result.append(forSpace(1));
                 break;
             }
