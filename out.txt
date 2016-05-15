@@ -1,7 +1,7 @@
 gddsg {
-    fsi ( a + b - c * r ) fdpj;
-    fkjsdf;
-    sdffsd = 25;
+    fsi (a + b && c * r) fd || pj;
+    fkjsdf|;
+    sdffs&d = 25;
     hksdfb {
         ds;
     }
