@@ -5,14 +5,14 @@ import java.io.*;
 /**
  * Read from file
  */
-public class MyReader implements ReaderInterface{
+public class Reader implements ReaderInterface{
     public FileInputStream text;
 
     /**
      * Constructor
      * @param text stream
      */
-    public MyReader(FileInputStream text) {
+    public Reader(FileInputStream text) {
         this.text = text;
 
     }
@@ -20,15 +20,15 @@ public class MyReader implements ReaderInterface{
     /**
      * read 1 symbol
      * @return char symbol
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    public char read() throws MyReaderException {
+    public char read() throws ReaderException {
         char result = '0';
         try {
             result = (char)text.read();
         }
         catch (IOException e){
-            throw new MyReaderException(e);
+            throw new ReaderException(e);
         }
         return result;
     }
@@ -36,29 +36,29 @@ public class MyReader implements ReaderInterface{
     /**
      * check end of stream
      * @return true if end
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    public boolean checkEnd() throws MyReaderException {
+    public boolean checkEnd() throws ReaderException {
         boolean a = false;
         try {
             a =( text.available() < 1);
         }
         catch (IOException e){
-            throw new MyReaderException(e);
+            throw new ReaderException(e);
         }
         return a;
     }
 
     /**
      * close reading stream
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    public void close() throws MyReaderException {
+    public void close() throws ReaderException {
         try {
             text.close();
         }
         catch (IOException e) {
-            throw new MyReaderException(e);
+            throw new ReaderException(e);
         }
     }
 }

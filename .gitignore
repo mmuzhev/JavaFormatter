@@ -1,6 +1,5 @@
-./idea
+/.idea
 target/
-pom.xml
 formatter.iml
 Formatter.iml
 
